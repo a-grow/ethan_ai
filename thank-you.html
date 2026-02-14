@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You — Andrew Grow</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-indigo': '#4F46E5',
+                        'brand-teal': '#14B8A6',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-body bg-navy-dark flex items-center justify-center min-h-screen relative overflow-hidden">
+
+    <!-- Wave Decoration (simplified for single page) -->
+    <div class="absolute inset-0 z-0 opacity-30 pointer-events-none">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-navy-dark"></div>
+        <div
+            class="hidden md:block absolute -top-1/2 -right-1/4 w-[1000px] h-[1000px] rounded-full bg-brand-indigo blur-[120px] opacity-20 animate-pulse">
+        </div>
+        <div class="hidden md:block absolute -bottom-1/2 -left-1/4 w-[800px] h-[800px] rounded-full bg-brand-teal blur-[100px] opacity-20 animate-pulse"
+            style="animation-duration: 4s;"></div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 relative z-10 text-center fade-in">
+        <div class="mb-8 flex justify-center">
+            <div class="w-20 h-20 bg-brand-teal/20 rounded-full flex items-center justify-center text-brand-teal">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-heading font-black text-white mb-6">
+            Thank you for <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-brand-indigo to-brand-teal">reaching
+                out!</span>
+        </h1>
+
+        <p class="text-xl text-light mb-12 leading-relaxed">
+            Your consultation request has been sent successfully. I’ll review your message and get back to you shortly.
+            In the meantime, feel free to explore my featured websites.
+        </p>
+
+        <a href="index.html" class="btn-primary inline-flex items-center text-lg px-8 py-4">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
+                </path>
+            </svg>
+            Back to Home
+        </a>
+    </div>
+
+</body>
+
+</html>
