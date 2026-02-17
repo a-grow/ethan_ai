@@ -1,5 +1,128 @@
 // JavaScript for Andrew Grow Portfolio Website
 
+// ===== Particle Field Background =====
+const canvas = document.getElementById('particle-canvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: null, y: null };
+    let animationFrameId;
+
+    // Set canvas size
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        initParticles();
+    }
+
+    // Particle class
+    class Particle {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.baseX = x;
+            this.baseY = y;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = (Math.random() - 0.5) * 0.3;
+            this.opacity = Math.random() * 0.5 + 0.3;
+        }
+
+        update() {
+            // Drift animation
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // Mouse interaction - particles shift toward cursor
+            if (mouse.x !== null && mouse.y !== null) {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const maxDistance = 150;
+
+                if (distance < maxDistance) {
+                    const force = (maxDistance - distance) / maxDistance;
+                    const angle = Math.atan2(dy, dx);
+                    this.x += Math.cos(angle) * force * 2;
+                    this.y += Math.sin(angle) * force * 2;
+                }
+            }
+
+            // Return to base position gradually
+            const returnSpeed = 0.02;
+            this.x += (this.baseX - this.x) * returnSpeed;
+            this.y += (this.baseY - this.y) * returnSpeed;
+
+            // Keep particles within bounds with wrapping
+            if (this.x < 0) this.x = canvas.width;
+            if (this.x > canvas.width) this.x = 0;
+            if (this.y < 0) this.y = canvas.height;
+            if (this.y > canvas.height) this.y = 0;
+        }
+
+        draw() {
+            ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = 'rgba(59, 130, 246, 0.8)';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+    }
+
+    // Initialize particles in a grid pattern
+    function initParticles() {
+        particles = [];
+        const spacing = 50;
+        const rows = Math.ceil(canvas.height / spacing);
+        const cols = Math.ceil(canvas.width / spacing);
+
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                const x = j * spacing + (Math.random() - 0.5) * 20;
+                const y = i * spacing + (Math.random() - 0.5) * 20;
+                particles.push(new Particle(x, y));
+            }
+        }
+    }
+
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    // Mouse tracking
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    // Initialize
+    resizeCanvas();
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        cancelAnimationFrame(animationFrameId);
+        resizeCanvas();
+        animate();
+    });
+}
+
 // ===== Smooth Scroll Behavior & Subject Autofill =====
 const contactForm = document.getElementById('contact-form');
 const subjectField = document.getElementById('subject');

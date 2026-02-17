@@ -189,8 +189,8 @@ body::before {
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 217, 255, 0.7), 0 0 60px rgba(0, 217, 255, 0.4);
 }
 
 .btn-primary-large {
@@ -592,11 +592,29 @@ section {
     }
 }
 
-/* GROW Highlight: Static Bold Gold (No Pulse) */
+/* GROW Highlight: Pulsing Golden Glow */
 .grow-highlight {
     color: #fcd34d;
     font-weight: 800;
     display: inline-block;
+    text-shadow: 0 0 20px rgba(252, 211, 77, 0.6);
+    animation: goldenPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes goldenPulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 20px rgba(252, 211, 77, 0.6),
+            0 0 30px rgba(252, 211, 77, 0.4);
+        transform: scale(1);
+    }
+    50% {
+        text-shadow: 
+            0 0 30px rgba(252, 211, 77, 0.9),
+            0 0 50px rgba(252, 211, 77, 0.6),
+            0 0 70px rgba(252, 211, 77, 0.4);
+        transform: scale(1.05);
+    }
 }
 
 .hero-title {
@@ -608,6 +626,11 @@ section {
     position: relative;
     background: linear-gradient(to bottom, #0f172a, #1e293b);
     overflow: hidden;
+}
+
+#particle-canvas {
+    width: 100%;
+    height: 100%;
 }
 
 /* Structured Glowing Mesh Streams (Layered Grid) */
