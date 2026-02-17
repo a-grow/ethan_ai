@@ -99,16 +99,14 @@ if (canvas) {
 
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < cols; j++) {
-                const - extend to entire hero section
-    const heroSection = document.getElementById('hero');
-    
-    heroSection.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-    });
+                const x = j * spacing + (Math.random() - 0.5) * 20;
+                const y = i * spacing + (Math.random() - 0.5) * 20;
+                particles.push(new Particle(x, y));
+            }
+        }
+    }
 
-    heroSectionmation loop
+    // Animation loop
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -120,14 +118,16 @@ if (canvas) {
         animationFrameId = requestAnimationFrame(animate);
     }
 
-    // Mouse tracking
-    canvas.addEventListener('mousemove', (e) => {
+    // Mouse tracking - extend to entire hero section
+    const heroSection = document.getElementById('hero');
+    
+    heroSection.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouse.x = e.clientX - rect.left;
         mouse.y = e.clientY - rect.top;
     });
 
-    canvas.addEventListener('mouseleave', () => {
+    heroSection.addEventListener('mouseleave', () => {
         mouse.x = null;
         mouse.y = null;
     });
