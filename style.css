@@ -362,36 +362,39 @@ nav {
     border-color: rgba(252, 211, 77, 0.6);
 }
 
-.screenshot-card {
+.screenshot-wrapper {
     position: relative;
     width: 100%;
-    min-height: 380px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
 }
 
-.card-overlay {
+.screenshot-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.screenshot-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(10, 25, 41, 0.3);
-    backdrop-filter: blur(2px);
+    background: rgba(10, 25, 41, 0);
+    backdrop-filter: blur(0px);
     transition: all 0.4s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    opacity: 0;
 }
 
-.project-card:hover .card-overlay {
-    background: rgba(10, 25, 41, 0.85);
-    backdrop-filter: blur(8px);
+.project-card:hover .screenshot-overlay {
+    background: rgba(10, 25, 41, 0.9);
+    backdrop-filter: blur(4px);
+    opacity: 1;
 }
 
-.card-content {
+.overlay-content {
     text-align: center;
     position: relative;
     z-index: 2;
@@ -618,11 +621,7 @@ span {
         height: 3rem;
     }
 
-    .screenshot-card {
-        min-height: 320px;
-    }
-
-    .card-overlay {
+    .screenshot-overlay {
         padding: 1.5rem;
     }
 
@@ -631,14 +630,10 @@ span {
     }
 
     /* Touch device support - tap to darken overlay */
-    .project-card:active .card-overlay {
-        background: rgba(10, 25, 41, 0.85);
-        backdrop-filter: blur(8px);
-    }
-
-    .project-card:active .card-content p,
-    .project-card:active .card-content a {
-        opacity: 1 !important;
+    .project-card:active .screenshot-overlay {
+        background: rgba(10, 25, 41, 0.9);
+        backdrop-filter: blur(4px);
+        opacity: 1;
     }
 }
 
