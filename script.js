@@ -25,7 +25,9 @@ if (canvas) {
             this.size = Math.random() * 2 + 1;
             this.speedX = (Math.random() - 0.5) * 0.3;
             this.speedY = (Math.random() - 0.5) * 0.3;
-            this.opacity = Math.random() * 0.5 + 0.3;
+            this.baseOpacity = Math.random() * 0.5 + 0.3;
+            this.opacity = this.baseOpacity;
+            this.glowIntensity = 0;
         }
 
         update() {
@@ -33,7 +35,7 @@ if (canvas) {
             this.x += this.speedX;
             this.y += this.speedY;
 
-            // Mouse interaction - particles shift toward cursor
+            // Mouse interaction - particles shift toward cursor and glow intensification
             if (mouse.x !== null && mouse.y !== null) {
                 const dx = mouse.x - this.x;
                 const dy = mouse.y - this.y;
@@ -45,7 +47,19 @@ if (canvas) {
                     const angle = Math.atan2(dy, dx);
                     this.x += Math.cos(angle) * force * 2;
                     this.y += Math.sin(angle) * force * 2;
+                    
+                    // Glow intensification near cursor
+                    this.glowIntensity = force * 0.8;
+                    this.opacity = this.baseOpacity + force * 0.5;
+                } else {
+                    // Fade back to base state
+                    this.glowIntensity *= 0.95;
+                    this.opacity = this.baseOpacity + this.glowIntensity * 0.3;
                 }
+            } else {
+                // Fade back when mouse leaves
+                this.glowIntensity *= 0.95;
+                this.opacity = this.baseOpacity + this.glowIntensity * 0.3;
             }
 
             // Return to base position gradually
@@ -61,11 +75,16 @@ if (canvas) {
         }
 
         draw() {
-            ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = 'rgba(59, 130, 246, 0.8)';
+            // Base color with dynamic opacity
+            const blueIntensity = 59 + this.glowIntensity * 150;
+            const greenIntensity = 130 + this.glowIntensity * 90;
+            const redIntensity = 246 + this.glowIntensity * 9;
+            
+            ctx.fillStyle = `rgba(${Math.min(blueIntensity, 255)}, ${Math.min(greenIntensity, 255)}, ${Math.min(redIntensity, 255)}, ${this.opacity})`;
+            ctx.shadowBlur = 10 + this.glowIntensity * 20;
+            ctx.shadowColor = `rgba(100, 180, 255, ${0.6 + this.glowIntensity * 0.4})`;
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.arc(this.x, this.y, this.size + this.glowIntensity * 1.5, 0, Math.PI * 2);
             ctx.fill();
             ctx.shadowBlur = 0;
         }
@@ -80,14 +99,16 @@ if (canvas) {
 
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < cols; j++) {
-                const x = j * spacing + (Math.random() - 0.5) * 20;
-                const y = i * spacing + (Math.random() - 0.5) * 20;
-                particles.push(new Particle(x, y));
-            }
-        }
-    }
+                const - extend to entire hero section
+    const heroSection = document.getElementById('hero');
+    
+    heroSection.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
 
-    // Animation loop
+    heroSectionmation loop
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
