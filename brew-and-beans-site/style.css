@@ -1,0 +1,452 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: #fdf7f2;
+  background-image:
+    radial-gradient(1000px 700px at 15% -10%, rgba(212, 163, 115, 0.55), transparent 55%),
+    radial-gradient(900px 650px at 85% 5%, rgba(111, 143, 75, 0.38), transparent 55%),
+    linear-gradient(180deg, #fff3e3 0%, #e9d6c2 45%, #f7efe6 100%);
+  color: #4b2e2e;
+  line-height: 1.7;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+}
+
+:root {
+  --cafe-serif: 'Cormorant Garamond', 'Georgia', serif;
+  --cafe-display: 'Allura', 'Georgia', serif;
+}
+
+/* Logo */
+.logo {
+  width: 120px;
+  height: auto;
+  margin: 1rem auto;
+  display: block;
+}
+
+/* Hero section */
+.hero {
+  background-image: url('images/hero.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 2rem 1rem 0;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin: 0.5rem 0;
+}
+
+.hero p {
+  font-size: 1.1rem;
+}
+
+/* Hero navigation (menu at bottom of hero) */
+.hero-nav {
+  margin-top: auto;
+  background-color: rgba(212, 163, 115, 0.25);
+  padding: 0.7rem 1.6rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 14px;
+}
+
+.hero-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 3.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-nav a {
+  color: #fdf7f2;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.05rem;
+}
+
+.hero-nav a:hover {
+  color: #6f8f4b;
+}
+
+/* Featured products (match HTML classes) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.8rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin: 0 auto 0.75rem;
+  display: block;
+}
+
+.product-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+  min-height: 1.5em;
+}
+
+.product-card p {
+  font-size: 1.05rem;
+  color: #6a4a4a;
+  min-height: 3em;
+}
+
+/* Mission statement */
+.mission {
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: transparent;
+  font-family: var(--cafe-serif);
+}
+
+.mission h2 {
+  display: inline-block;
+  background-color: transparent;
+  padding: 0.4rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  font-family: var(--cafe-display);
+  font-size: 2.8rem;
+}
+
+.mission-content {
+  max-width: 850px;
+  margin: 0 auto;
+  display: grid;
+  gap: 0.6rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.mission-logo {
+  width: 140px;
+  height: auto;
+  margin-top: -0.6rem;
+}
+
+.mission p {
+  font-size: 1.15rem;
+  color: #5a3a3a;
+  margin-top: 0.2rem;
+}
+
+/* Menu page */
+.menu-page {
+  padding: 3rem 2rem 4rem;
+  text-align: center;
+  font-family: var(--cafe-serif);
+}
+
+.menu-page h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  font-family: var(--cafe-display);
+}
+
+.menu-section {
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+  text-align: left;
+}
+
+.menu-section h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #4b2e2e;
+}
+
+.menu-list {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.menu-item {
+  padding: 1rem 1.2rem;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+}
+
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.menu-item-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.menu-price {
+  font-weight: 600;
+  color: #6a4a4a;
+}
+
+.menu-item p {
+  margin: 0;
+  color: #6a4a4a;
+}
+
+/* About page */
+.about-page {
+  padding: 3rem 2rem 4rem;
+  text-align: center;
+  font-family: var(--cafe-serif);
+}
+
+.about-page h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  font-family: var(--cafe-display);
+}
+
+.about-hero {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  align-items: center;
+  text-align: left;
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+.about-copy p {
+  font-size: 1.1rem;
+  color: #5a3a3a;
+  margin-bottom: 1rem;
+}
+
+/* Contact page */
+.contact-page {
+  padding: 3rem 2rem 4rem;
+  text-align: center;
+  font-family: var(--cafe-serif);
+}
+
+.contact-page h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  font-family: var(--cafe-display);
+}
+
+.contact-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.6rem;
+  text-align: left;
+}
+
+.contact-card {
+  padding: 1.4rem 1.6rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+.contact-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+  color: #4b2e2e;
+}
+
+.contact-card p {
+  margin: 0 0 0.8rem;
+  color: #5a3a3a;
+}
+
+.contact-form {
+  max-width: 700px;
+  margin: 2.5rem auto 0;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1.8rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #4b2e2e;
+}
+
+.form-row {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-row label {
+  font-weight: 600;
+  color: #4b2e2e;
+}
+
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(75, 46, 46, 0.2);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-family: var(--cafe-serif);
+  font-size: 1rem;
+  color: #4b2e2e;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: rgba(75, 46, 46, 0.5);
+  box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.25);
+}
+
+.form-note {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: #6a4a4a;
+}
+
+/* Featured section */
+.featured {
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: transparent;
+  font-family: var(--cafe-serif);
+}
+
+.featured h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  background-color: transparent;
+  padding: 0.4rem 1rem;
+  border-radius: 10px;
+  font-family: var(--cafe-display);
+}
+
+.product {
+  display: inline-block;
+  margin: 1rem;
+  width: 220px;
+}
+
+.product img {
+  width: 180px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product p {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Signature section */
+.signature {
+  padding: 3rem 2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: var(--cafe-serif);
+}
+
+.signature-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.signature-content img {
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.signature-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: var(--cafe-display);
+}
+
+.signature-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #4b2e2e;
+  color: #fdf7f2;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background-color: #4b2e2e;
+  color: #fdf7f2;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  font-family: var(--cafe-serif);
+}
