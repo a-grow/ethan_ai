@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/aurora-audio/assets//_next/:path+",
+        "destination": "/aurora-audio/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
