@@ -111,5 +111,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 150); // 150ms after scroll stops
         }, { passive: true });
     }
+
+    // 4. Contact Section Highlight Animation
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        const observerOptions = {
+            threshold: 0.5 // Trigger when 50% of the footer is visible
+        };
+
+        const contactObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove class and use requestAnimationFrame to restart animation reliably
+                    contactSection.classList.remove('highlight-contact');
+                    window.requestAnimationFrame(() => {
+                        window.requestAnimationFrame(() => {
+                            contactSection.classList.add('highlight-contact');
+                        });
+                    });
+                }
+            });
+        }, observerOptions);
+
+        contactObserver.observe(contactSection);
+    }
 });
 
