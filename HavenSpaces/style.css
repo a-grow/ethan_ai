@@ -579,16 +579,7 @@ a {
   pointer-events: none;
 }
 
-.slider-button {
-  position: absolute;
-  top: 50%;
-  left: -12px;
-  transform: translateY(-50%);
-  font-size: 20px;
-  background: #fff;
-  border-radius: 50%;
-  padding: 4px;
-}
+
 
 /* Before/After Slider Handle Styling */
 .slider-handle {
@@ -614,14 +605,15 @@ a {
   transform: translateY(-50%);
   font-size: 18px;
   background: #fff;
-  border: 2px solid #000;
+  border: 2px solid var(--color-accent-gold);
   border-radius: 50%;
   padding: 6px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .slider-button:hover {
-  background: #f0f0f0;
+  background: #fff;
   transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
 }
