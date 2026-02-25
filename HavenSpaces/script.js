@@ -54,6 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 handle.style.left = `${value}%`;
             }
         });
+
+        const button = slider.querySelector('.slider-button');
+        if (button) {
+            const triggerBounce = () => {
+                button.classList.add('bounce');
+                setTimeout(() => {
+                    button.classList.remove('bounce');
+                }, 400); // matches animation duration
+            };
+
+            input.addEventListener('mouseup', triggerBounce);
+            input.addEventListener('touchend', triggerBounce);
+        }
     });
 });
 
