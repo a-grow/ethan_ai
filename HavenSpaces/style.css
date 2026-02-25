@@ -623,19 +623,53 @@ a {
   height: 32px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at 30% 30%, #fef5d4, #D4AF37 60%, #997e26);
-  border: none;
+  justify-content: space-between;
+  padding: 0 4px;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #f0f0f0 60%, #dcdcdc);
+  border: 1px solid #000;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.3), inset 0 3px 5px rgba(255, 255, 255, 0.6), 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .slider-button:hover,
 .slider-button.dragging {
   transform: translateY(-50%) scale(1.1);
-  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.3), inset 0 3px 5px rgba(255, 255, 255, 0.6), 0 0 14px rgba(212, 175, 55, 0.8);
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(255, 255, 255, 0.9), 0 0 16px rgba(212, 175, 55, 0.9);
+}
+
+.slider-arrow {
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.slider-arrow.left {
+  border-right: 6px solid var(--color-accent-gold);
+}
+
+.slider-arrow.right {
+  border-left: 6px solid var(--color-accent-gold);
+}
+
+.slider-tagline {
+  position: absolute;
+  top: calc(60% + 24px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8), 0 0 6px rgba(212, 175, 55, 0.6);
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.slider-tagline.fade-out {
+  opacity: 0;
 }
 
 .slider-button.bounce {

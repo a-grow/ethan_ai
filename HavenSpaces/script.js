@@ -76,6 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
             input.addEventListener('mouseup', triggerBounce);
             input.addEventListener('touchend', triggerBounce);
         }
+
+        const tagline = slider.querySelector('.slider-tagline');
+        if (tagline) {
+            const hideTagline = () => {
+                tagline.classList.add('fade-out');
+                // Remove listeners so it only triggers once
+                input.removeEventListener('mousedown', hideTagline);
+                input.removeEventListener('touchstart', hideTagline);
+            };
+
+            input.addEventListener('mousedown', hideTagline);
+            input.addEventListener('touchstart', hideTagline);
+        }
     });
 });
 
