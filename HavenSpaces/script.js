@@ -33,14 +33,27 @@ document.addEventListener('DOMContentLoaded', () => {
     sliders.forEach(slider => {
         const input = slider.querySelector('.slider-input');
         const handle = slider.querySelector('.slider-handle');
-        const imgAfter = slider.querySelector('.img-after'); // clip AFTER image
+        const imgBefore = slider.querySelector('.img-before'); // clip BEFORE image
+
+        // Initialize handle to match input value
+        if (input) {
+            handle.style.left = `${input.value}%`;
+            if (imgBefore) {
+                imgBefore.style.clipPath = `inset(0 ${100 - input.value}% 0 0)`;
+            }
+        }
 
         input.addEventListener('input', (e) => {
             const value = e.target.value;
-            // Clip the AFTER image to reveal/hide it
-            imgAfter.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+            // Clip the BEFORE image to reveal/hide the AFTER image underneath
+            if (imgBefore) {
+                imgBefore.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+            }
             // Move the handle to match slider position
-            handle.style.left = `${value}%`;
+            if (handle) {
+                handle.style.left = `${value}%`;
+            }
         });
     });
 });
+

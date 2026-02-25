@@ -329,7 +329,6 @@ a {
 }
 
 .img-before {
-  clip-path: inset(0 50% 0 0);
   z-index: 2;
 }
 
@@ -559,10 +558,7 @@ a {
   height: auto;
 }
 
-.img-after {
-  clip-path: inset(0 50% 0 0);
-  /* start with half revealed */
-}
+
 
 .slider-input {
   width: 100%;
